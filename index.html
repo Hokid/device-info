@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <style>
+    body {
+      margin-left: 25px;
+    }
+    #fix {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 20px;
+      background-color: #ff6067;
+    }
+    hr {
+      border-style: solid;
+      border-color: #bbb;
+      margin-left: -5px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+
+    span {
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div id="fix"></div>
+  <h3>device pixel ration: <span id="pixelRatio"></span></h3>
+  <script>
+    var dpr = window.devicePixelRatio;
+    document.getElementById("pixelRatio").innerHTML = dpr;
+  </script>
+
+  <h3>default font size: <span id="defaultFontSize"></span></h3>
+  <script>
+    document.getElementById("defaultFontSize").innerHTML = window.getComputedStyle(document.documentElement).fontSize;
+  </script>
+  <style>
+    #boxIn { width: 1in; }
+  </style>
+  <div id="boxIn"></div>
+  <h3>1 дюйм: <span id="dIn"></span></h3>
+  <h3>Ширина экрана: <span id="sW"></span></h3>
+  <h3>Высота экрана: <span id="sH"></span></h3>
+  <h3>Диагональ в px: <span id="diagPx"></span></h3>
+  <h3>Диагональ в дюймах: <span id="diagIn"></span></h3>
+  <h3>PPI: <span id="ppi"></span></h3>
+  <script>
+    var oneIn = parseFloat(window.getComputedStyle(document.getElementById("boxIn")).width);
+    var sWidth = window.screen.width;
+    var sHeight = window.screen.height;
+    var dPx = Math.sqrt(sWidth*sWidth+sHeight*sHeight);
+    var dPx2 = Math.sqrt((sWidth*dpr)*(sWidth*dpr)+(sHeight*dpr)*(sHeight*dpr));
+
+    document.getElementById("dIn").innerHTML = oneIn+" / "+oneIn*dpr;
+    document.getElementById("sW").innerHTML = sWidth+" / "+sWidth*dpr;
+    document.getElementById("sH").innerHTML = sHeight+" / "+sHeight*dpr;
+    document.getElementById("diagPx").innerHTML = dPx+" / "+dPx2;
+    document.getElementById("diagIn").innerHTML = dPx/oneIn+" / "+dPx2/(oneIn*dpr);
+    document.getElementById("ppi").innerHTML = dPx/(dPx/oneIn)+" / "+dPx2/(dPx2/(oneIn*dpr));
+
+  </script>
+  
+
+  <hr>
+  <style>
+    #box0 {
+      width: 50px;
+      height: 50px;
+      background-color: #000;
+    }
+  </style>
+
+  <h5>width: 50px<br>height: 50px</h5>
+  <div id="box0"></div>
+
+
+  <hr>
+
+  <style>
+    #box1 {
+      width: 1em;
+      height: 1em;
+      background-color: #000;
+    }
+  </style>
+
+  <h5>widtn: 1em<br>height: 1em</h5>
+
+  <div id="box1"></div>
+
+
+  <hr>
+
+  <style>
+    #box2 {
+      width: 1pt;
+      height: 1pt;
+      background-color: #000;
+    }
+  </style>
+
+  <h5>widtn: 1pt<br>height: 1pt</h5>
+
+  <div id="box2"></div>
+  <h5 id="box2des"></h5>
+
+  <script>
+    document.getElementById("box2des").innerHTML = window.getComputedStyle(document.getElementById("box2")).height;
+  </script>
+  
+  
+  <hr>
+
+  <style>
+    #box3 {
+      width: 1mm;
+      height: 1mm;
+      background-color: #000;
+    }
+  </style>
+
+  <h5>widtn: 1mm<br>height: 1mm</h5>
+
+  <div id="box3"></div>
+  <h5 id="box3des"></h5>
+
+  <script>
+    document.getElementById("box3des").innerHTML = window.getComputedStyle(document.getElementById("box3")).height;
+  </script>
+
+
+  <hr>
+
+    <style>
+      #box4 {
+        width: 1ch;
+        height: 1ch;
+        background-color: #000;
+      }
+    </style>
+
+    <h5>widtn: 1ch<br>height: 1ch</h5>
+
+    <div id="box4"></div>
+    <h5 id="box4des"></h5>
+
+    <script>
+      document.getElementById("box4des").innerHTML = window.getComputedStyle(document.getElementById("box4")).height;
+    </script>
+    
+
+    <hr>
+
+    <style>
+      #box5 {
+        width: 1vh;
+        height: 1vh;
+        background-color: #000;
+      }
+    </style>
+
+    <h5>widtn: 1vh<br>height: 1vh</h5>
+
+    <div id="box5"></div>
+    <h5 id="box5des"></h5>
+
+    <script>
+      document.getElementById("box5des").innerHTML = window.getComputedStyle(document.getElementById("box5")).height;
+    </script>
+
+
+    <hr>
+
+    <style>
+      #box6 {
+        width: 1vw;
+        height: 1vw;
+        background-color: #000;
+      }
+    </style>
+
+    <h5>widtn: 1vw<br>height: 1vw</h5>
+
+    <div id="box6"></div>
+    <h5 id="box6des"></h5>
+
+    <script>
+      document.getElementById("box6des").innerHTML = window.getComputedStyle(document.getElementById("box6")).height;
+    </script>
+
+
+    <hr>
+
+    <style>
+      #box7 {
+        width: 1in;
+        height: 1in;
+        background-color: #000;
+      }
+    </style>
+
+    <h5>widtn: 1in<br>height: 1in</h5>
+
+    <div id="box7"></div>
+    <h5 id="box7des"></h5>
+    <h5 id="box7des2"></h5>
+
+    <script>
+      var box7in = window.getComputedStyle(document.getElementById("box7")).height;
+      document.getElementById("box7des").innerHTML = box7in;
+    </script>
+
+    <script>
+    document.getElementById("box7des2").innerHTML = parseFloat(box7in) / parseFloat(window.getComputedStyle(document.getElementById("box3")).height);
+    
+    </script>
+</body>
+</html>
